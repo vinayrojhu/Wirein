@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WIREin</string>
+    <string name="large">Create references for each composable in the ConstraintLayout using the createRefs() or createRefFor()
+Constraints are provided using the constrainAs() modifier, which takes the reference as a parameter and lets you specify its constraints in the body lambda.
+Constraints are specified using linkTo() or other helpful methods.
+parent is an existing reference that can be used to specify constraints towards the ConstraintLayout composable itself.</string>
+    <string name="follow">Follow</string>
+    <string name="reels">Reels</string>
+    <string name="search_name">Search name</string>
+    <string name="posts">Posts</string>
+    <string name="profile">Profile</string>
+    <string name="message_hint">Message...</string>
+    <string name="back">Back</string>
+</resources>
