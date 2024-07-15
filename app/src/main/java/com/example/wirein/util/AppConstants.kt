@@ -1,6 +1,6 @@
 package com.example.wirein.util
 
-import java.net.URL
+//import java.net.URL
 
 class AppConstants {
 //    val MY_USER_ID = "12340"
@@ -11,7 +11,7 @@ class AppConstants {
 
     companion object {
         val BASE_URL: String = "https://instagramrestapi.onrender.com/api/"
-        val DATE_FORMAT: String? = "dd MMM, yy hh:mm a"
+        val DATE_FORMAT: String = "dd MMM, yy hh:mm a"
         val MY_USER_ID= "12340"
     }
 }

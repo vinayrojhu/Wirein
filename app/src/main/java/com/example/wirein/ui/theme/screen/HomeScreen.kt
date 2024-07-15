@@ -1,8 +1,6 @@
 package com.example.wirein.ui.theme.screen
 
 import android.content.res.Configuration
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,10 +14,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +35,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -54,18 +49,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.wirein.R
 import com.example.wirein.model.ApiFailure
 import com.example.wirein.model.BaseState
-import com.example.wirein.model.Post
-import com.example.wirein.model.User
-import com.example.wirein.model.WirePost
 import com.example.wirein.ui.theme.JetPackComposeBasicTheme
-import com.example.wirein.ui.theme.LIGHT_BLUE
 import com.example.wirein.ui.theme.Navigation.NavigationItem
 import com.example.wirein.ui.theme.components.CenterCircularProgressBar
 import com.example.wirein.ui.theme.components.CircularImage
 import com.example.wirein.ui.theme.components.FFpostbox
-import com.example.wirein.ui.theme.components.PostItem
 import com.example.wirein.ui.theme.screen.viewmodel.HomeViewModel
-import com.example.wirein.util.AppConstants
 import com.example.wirein.util.AppConstants.Companion.MY_USER_ID
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
