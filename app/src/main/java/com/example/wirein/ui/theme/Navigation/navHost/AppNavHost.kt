@@ -58,7 +58,7 @@ fun AppNavHost(
             HomeScreen(homeViewModel = homeViewModel, navController = navController)
         }
         composable(NavigationItem.Search.route) {
-            SearchScreen(homeViewModel = homeViewModel, navController = navController)
+            SearchScreen(homeViewModel = homeViewModel )
         }
         composable(NavigationItem.CreatePost.route) {
             CreatePostScreen()
