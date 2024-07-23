@@ -1,7 +1,11 @@
 package com.example.wirein.ui.theme.screen
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,10 +14,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
@@ -35,7 +42,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -179,92 +188,98 @@ fun HomeScreen(
                     })
                     LazyColumn {
                         item {
-                            LazyRow(Modifier.padding(vertical = 8.dp)) {
-                                item {
-                                    Box(
-                                        contentAlignment = Alignment.BottomEnd ,
-                                    ) {
-//                                        CircularImage(                          // story-> Text
-//                                            imageUrl = user.profileImage,
-//                                            isBorderVisible = false,
-//                                            isNameVisible = true,
-//                                            name = "Your story",
-//                                            modifier = Modifier
-//                                                .padding(start = 16.dp, end = 8.dp)
-//                                                .clickable {
-//                                                    navController.navigate(NavigationItem.CreatePost.route)
-//                                                },
-//                                        )
-//                                        Icon(
-//                                            tint = LIGHT_BLUE,
-//                                            imageVector = Icons.Default.AddCircle,
-//                                            contentDescription = null,
-//                                            modifier = Modifier
-//                                                .padding(bottom = 18.dp, end = 4.dp)
-//                                                .clip(CircleShape)
-//                                                .background(Color.White)
-//                                                .border(
-//                                                    width = 1.dp,
-//                                                    color = Color.White,
-//                                                    shape = CircleShape
+//                            LazyRow(Modifier.padding(vertical = 8.dp)) {
+//                                item {
+//                                    Box(
+//                                        contentAlignment = Alignment.BottomEnd ,
+//                                    ) {
+////                                        CircularImage(                          // story-> Text
+////                                            imageUrl = user.profileImage,
+////                                            isBorderVisible = false,
+////                                            isNameVisible = true,
+////                                            name = "Your story",
+////                                            modifier = Modifier
+////                                                .padding(start = 16.dp, end = 8.dp)
+////                                                .clickable {
+////                                                    navController.navigate(NavigationItem.CreatePost.route)
+////                                                },
+////                                        )
+////                                        Icon(
+////                                            tint = LIGHT_BLUE,
+////                                            imageVector = Icons.Default.AddCircle,
+////                                            contentDescription = null,
+////                                            modifier = Modifier
+////                                                .padding(bottom = 18.dp, end = 4.dp)
+////                                                .clip(CircleShape)
+////                                                .background(Color.White)
+////                                                .border(
+////                                                    width = 1.dp,
+////                                                    color = Color.White,
+////                                                    shape = CircleShape
+////                                                )
+////                                        )
+//
+//                                        Column(Modifier.padding(start = 10.dp, top = 10.dp, end = 5.dp)) {
+//                                            Text(text = "  Top",
+//                                                fontStyle = FontStyle.Normal,
+//                                                color = Color.DarkGray,
+//                                                textAlign = TextAlign.Center)
+//                                            Text(text = "Stories",
+//                                                fontStyle = FontStyle.Normal,
+//                                                color = Color.DarkGray,
+//                                                textAlign = TextAlign.Center)
+//                                        }
+//
+//
+//                                    }
+//                                    Spacer(modifier = Modifier.height(8.dp))
+//                                }
+//                                when (val s = storiesState.value) {
+//                                    is BaseState.Failed -> {
+//                                        // no-op
+//                                    }
+//
+//                                    BaseState.Loading -> {
+//                                        // no-op
+//                                    }
+//
+//                                    is BaseState.Success -> {
+//                                        val stories = s.data.filter { story ->
+//                                            user.followingIds.any {
+//                                                story.userId == it
+//                                            }
+//                                        }.distinctBy { it.userId }
+//                                        items(stories) { story ->
+//                                            val usr = followings.find {
+//                                                story.userId == it.id
+//                                            }
+//                                            if (usr != null) {
+//                                                CircularImage(
+//                                                    imageUrl = usr.profileImage,
+//                                                    isBorderVisible = true,
+//                                                    isNameVisible = true,
+//                                                    isAnimated = true,
+//                                                    modifier = Modifier
+//                                                        .padding(horizontal = 8.dp)
+//                                                        .clickable {
+//                                                            navController.navigate(
+//                                                                "${NavigationItem.ViewStory.route}/${story.id}/${story.userId}"
+//                                                            )
+//                                                        },
 //                                                )
-//                                        )
+//                                            }
+//                                        }
+//                                    }
 
-                                        Column(Modifier.padding(start = 10.dp, top = 10.dp, end = 5.dp)) {
-                                            Text(text = "  Top",
-                                                fontStyle = FontStyle.Normal,
-                                                color = Color.DarkGray,
-                                                textAlign = TextAlign.Center)
-                                            Text(text = "Stories",
-                                                fontStyle = FontStyle.Normal,
-                                                color = Color.DarkGray,
-                                                textAlign = TextAlign.Center)
-                                        }
+//                                    ImageHi()
 
+//                                }
 
-                                    }
-                                    Spacer(modifier = Modifier.height(8.dp))
-                                }
-                                when (val s = storiesState.value) {
-                                    is BaseState.Failed -> {
-                                        // no-op
-                                    }
-
-                                    BaseState.Loading -> {
-                                        // no-op
-                                    }
-
-                                    is BaseState.Success -> {
-                                        val stories = s.data.filter { story ->
-                                            user.followingIds.any {
-                                                story.userId == it
-                                            }
-                                        }.distinctBy { it.userId }
-                                        items(stories) { story ->
-                                            val usr = followings.find {
-                                                story.userId == it.id
-                                            }
-                                            if (usr != null) {
-                                                CircularImage(
-                                                    imageUrl = usr.profileImage,
-                                                    isBorderVisible = true,
-                                                    isNameVisible = true,
-                                                    isAnimated = true,
-                                                    modifier = Modifier
-                                                        .padding(horizontal = 8.dp)
-                                                        .clickable {
-                                                            navController.navigate(
-                                                                "${NavigationItem.ViewStory.route}/${story.id}/${story.userId}"
-                                                            )
-                                                        },
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+//                            }
+                            ImageHi()
                         }
-                        when (val s = postsState.value) {                    // posts toggle
+                        when (val s = postsState.value) {
+                            // posts toggle
                             is BaseState.Failed -> {}
                             BaseState.Loading -> {}
                             is BaseState.Success -> {
@@ -309,24 +324,24 @@ fun HomeScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun DefaultPreview() {
-    JetPackComposeBasicTheme {
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            val homeViewModel: HomeViewModel = viewModel()
-
-            HomeScreen(
-                homeViewModel = homeViewModel,
-                navController = rememberNavController()
-            )
-        }
-    }
-}
+//@Preview(showBackground = true)
+//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Composable
+//fun DefaultPreview() {
+//    JetPackComposeBasicTheme {
+//        Surface(
+//            modifier = Modifier.fillMaxWidth(),
+//            color = MaterialTheme.colorScheme.background
+//        ) {
+//            val homeViewModel: HomeViewModel = viewModel()
+//
+//            HomeScreen(
+//                homeViewModel = homeViewModel,
+//                navController = rememberNavController()
+//            )
+//        }
+//    }
+//}
 
 
 
@@ -370,3 +385,93 @@ fun DefaultPreview() {
 //        onMoreClick = { /*no-op*/ }
 //    )
 //}
+
+
+@Composable
+fun ImagePostBoxRow(
+    modifier: Modifier = Modifier,
+    images: List<Int>,
+    dotCount: Int
+) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(images) { image ->
+            PostBox(image, dotCount)
+        }
+    }
+}
+
+@Composable
+fun PostBox(
+    image: Int,
+    dotCount: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .width(295.dp)
+            .height(90.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color.White)
+    ) {
+        Image(
+            painter = painterResource(id = image),
+            contentDescription = "Post image",
+            modifier = Modifier
+                .fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+        Dots(dotCount)
+    }
+}
+
+@Composable
+fun Dots(
+    count: Int,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentSize(Alignment.Center)
+    ) {
+        repeat(count) { index ->
+            val isSelected = remember { mutableStateOf(index == 0) }
+            Dot(
+                isSelected = isSelected.value,
+                modifier = Modifier
+                    .size(8.dp)
+                    .padding(horizontal = 4.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun Dot(
+    isSelected: Boolean,
+    modifier: Modifier = Modifier
+) {
+    val color = if (isSelected) Color.Black else Color.Gray
+    Canvas(
+        modifier = modifier
+    ) {
+        drawCircle(color = color, radius = 4.dp.toPx())
+    }
+}
+
+
+@Preview
+@Composable
+fun ImageHi(){
+    Box(modifier = Modifier.padding(start = 8.dp)){
+        ImagePostBoxRow(
+            images = listOf(R.drawable.lt_highlight, R.drawable.lt_highlight, R.drawable.lt_highlight),
+            dotCount = 4
+        )
+    }
+
+}
+

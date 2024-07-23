@@ -112,7 +112,7 @@ class MainActivity : ComponentActivity() {
                                             BottomNavItem(
                                                 NavigationItem.CreatePost.route,
                                                 Screen.CREATE_POST.name,
-                                                icon = rememberVectorPainter(image = Icons.Default.AddCircle)
+                                                icon = painterResource(id = R.drawable.addicon)
                                             ),
                                             BottomNavItem(
                                                 NavigationItem.Reels.route,
@@ -122,7 +122,7 @@ class MainActivity : ComponentActivity() {
                                             BottomNavItem(
                                                 NavigationItem.Profile.route,
                                                 Screen.PROFILE.name,
-                                                icon = rememberVectorPainter(image = Icons.Default.Person)
+                                                icon = painterResource(id = R.drawable.usericon)
                                             ),
                                         ),
                                         navController = navController,

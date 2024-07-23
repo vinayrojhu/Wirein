@@ -121,8 +121,8 @@ fun ProfileScreen(
                 displayName = "Vinay",
                 description = user.bio,
                 url = "www.indicwire.com",                               //user.links.firstOrNull(),
-                followedBy = listOf("Vinay, Jerry"),
-                otherCount = 34,
+                followedBy = listOf("Sam, Jerry"),
+                otherCount = 43,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -146,18 +146,18 @@ fun ProfileScreen(
                 imageWithText = listOf(
                     "Posts" to painterResource(id = R.drawable.node_icon6),
                     "Reels" to painterResource(id = R.drawable.podcast_profile_icon),
-                    "Profile" to painterResource(id = R.drawable.live_broadcast_icon),
+                    "Profile" to painterResource(id = R.drawable.podcastfinal),
                 )
             ) {
                 selectedTabIndex = it
             }
-            when (selectedTabIndex) {
-                0 -> PostSection(
-                    posts = posts,
-                    modifier = Modifier.fillMaxWidth(),
-                    navController
-                )
-            }
+//            when (selectedTabIndex) {
+//                0 -> PostSection(
+//                    posts = posts,
+//                    modifier = Modifier.fillMaxWidth(),
+//                    navController
+//                )
+//            }
         }
     } else {
         CenterCircularProgressBar()

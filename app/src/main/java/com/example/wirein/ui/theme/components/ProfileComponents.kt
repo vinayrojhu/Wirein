@@ -8,9 +8,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
@@ -89,16 +91,34 @@ fun MiddlePart(
 @Composable
 fun StateInfo(modifier: Modifier, user: User, navController: NavController) {
 //    StateItem("Posts", user.postIds.size.toString(), modifier)
-    StateItem("Followers", user.followerIds.size.toString(), modifier.clickable {
-        navController.navigate(
-            "${NavigationItem.Followers.route}/false/${user.id}"
-        )
-    })
-    StateItem("Following", user.followingIds.size.toString(), modifier.clickable {
-        navController.navigate(
-            "${NavigationItem.Followers.route}/true/${user.id}"
-        )
-    })
+    Column {
+        Row {
+            StateItem("Followers", user.followerIds.size.toString(), modifier.clickable {
+                navController.navigate(
+                    "${NavigationItem.Followers.route}/false/${user.id}"
+                )
+            })
+            StateItem("Audios", user.followingIds.size.toString(), modifier.clickable {
+                navController.navigate(
+                    "${NavigationItem.Followers.route}/true/${user.id}"
+                )
+            })
+
+        }
+        Row {
+            StateItem("Following", user.followingIds.size.toString(), modifier.clickable {
+                navController.navigate(
+                    "${NavigationItem.Followers.route}/true/${user.id}"
+                )
+            })
+            StateItem("Videos", user.followerIds.size.toString(), modifier.clickable {
+                navController.navigate(
+                    "${NavigationItem.Followers.route}/false/${user.id}"
+                )
+            })
+        }
+    }
+
 }
 
 @Composable
@@ -240,7 +260,7 @@ fun ButtonSection(
                 )
         )
         ActionButton(
-            text = middleText,
+            text = "Hide Profile",
             modifier = Modifier
                 .defaultMinSize(
                     minWidth = minWidth
